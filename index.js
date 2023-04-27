@@ -2,13 +2,14 @@ require("./db");
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const cookieParser = require('cookie-parser')
+const cookieParser = require("cookie-parser");
 const userRoutes = require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");
 const errorHandler = require("./middlewares/error");
 const PORT = process.env.PORT || 3000;
+const corsOptions = require("./config/corsOptions");
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.static("public"));
